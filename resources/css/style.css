@@ -1,0 +1,828 @@
+
+:root {
+
+    /* Основные цвета */
+    --primary-color: #1e1e2f;
+    --secondary-color: #f4f4f5;
+    --accent-color: #c93333;
+
+    /* Фоновые цвета */
+    --background-color: #f7f7f8;
+    --surface-color: #ffffff;
+
+    /* Текстовые цвета */
+    --text-color: #2c2c2e;
+    --muted-text-color: #7d7d7d;
+
+    /* Границы и тени */
+    --border-color: #e0e0e0;
+    --box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
+}
+
+
+html,
+body {
+    height: 100%;
+    font-family: "Cormorant Infant", serif;
+}
+
+body {
+    min-width: 320px;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3 h4 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    position: relative;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+
+a:hover::after {
+    width: 100%;
+}
+
+a.no-underline::after {
+    content: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*---- General Rules ---*/
+
+/*---  Header  ----*/
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main.main {
+    flex: 1 1 auto;
+}
+
+
+header {
+    background-color: var(--surface-color);
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.header-list-menu a {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-list select {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.cart-container {
+    position: relative;
+    /*display: inline-block;*/
+}
+
+.cart {
+    width: 24px;
+    height: 24px;
+    stroke: var(--text-color);
+    transition: stroke 0.3s;
+    cursor: pointer;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -13px;
+    background-color: var(--background-color);
+    padding: 3px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-menu {
+    font-size: 24px;
+}
+
+
+.offcanvas.catalog-offcanvas {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.catalog-offcanvas-header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+}
+
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+
+.mobile-menu-list {
+    margin-top: 20px;
+}
+
+.header-list-menu-mobile {
+    margin-bottom: 15px;
+
+}
+
+.header-list-menu-mobile a {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    /*display: block;*/
+}
+
+
+.catalog-info-header,
+.catalog-hours-header,
+.catalog-contacts-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.catalog-contacts-list {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.catalog-contacts-list li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.catalog-contacts-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.catalog-contacts-list a:hover {
+    color: var(--text-color);
+}
+
+
+/*----- Main -----*/
+
+/*----- Slider ----*/
+
+
+.carousel img {
+    max-height: 300px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 30px;
+    margin: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: var(--background-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-prev {
+    left: 15px;
+}
+
+.carousel-control-next {
+    right: 15px;
+}
+
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: var(--background-color);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    filter: invert(1);
+}
+
+
+/*--- Section Category --*/
+
+.categories {
+    padding: 40px 0;
+}
+
+
+/* Контейнер для карточек */
+.category-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+
+.category-name h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.category-name h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.category-name h3 a:hover {
+    color: var(--accent-color);
+}
+
+
+/*--- Section Food --*/
+.foods {
+    padding: 0 0 40px 0;
+}
+
+/* Карточка товара */
+
+.product-card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--surface-color);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+
+.product-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Зоны офферов */
+.product-card-offer {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-card-offer .badge {
+    font-size: 14px;
+    padding: 5px 8px;
+    border-radius: 3px;
+}
+
+
+/* Изображение товара */
+.product-thumb {
+    position: relative;
+    width: 100%;
+    max-height: 305px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-thumb img:hover {
+    /*transform: scale(1.1);*/
+}
+
+/* Детали товара */
+.product-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-details h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.product-details h4 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-details h4 a:hover {
+    color: var(--accent-color);
+}
+
+.in-stock {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.product-excerpt {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.product-bottom-details {
+    padding-top: 10px;
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.product-price small {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: var(--muted-text-color);
+    margin-right: 5px;
+}
+
+.product-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.product-links svg {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.product-links svg:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.btn-cart {
+    border: none;
+    background-color: var(--surface-color);
+}
+
+
+/*--- Form Reservation ---*/
+
+.reserv {
+    padding: 30px;
+}
+
+.form-reserve {
+    padding: 20px 20px;
+    border: 1px solid var(--border-color);
+    background: var(--surface-color);
+    margin: 50px auto;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+/*---- Basket ---*/
+
+.cart-image img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+
+.cart-section {
+    padding: 30px;
+}
+
+.cart-item {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--surface-color);
+    transition: box-shadow 0.3s ease;
+}
+
+.cart-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-image img {
+    border-radius: 4px;
+    max-width: 100px;
+    height: auto;
+}
+
+.cart-product-name {
+    font-size: 20px;
+}
+
+.cart-product-name:hover {
+    color: var(--accent-color);
+    transition: all .3s;
+}
+
+.cart-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+
+.quantity-controls button {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.quantity-controls button:hover {
+    background-color: var(--border-color);
+}
+
+.quantity-input {
+    width: 30px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    height: 41px;
+}
+
+.quantity-input:focus {
+    border: 1px solid var(--border-color);
+    outline: none;
+}
+
+.quantity-input:active {
+    border: 1px solid var(--border-color);
+}
+
+.btn-delete-product {
+    background-color: transparent;
+    border: none;
+    color: #dc3545;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.btn-delete-product:hover {
+    color: #a71d2a;
+    transform: scale(1.2);
+}
+
+.cart-summary {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--surface-color);
+}
+
+.cart-summary .item-count p,
+.cart-summary .item-total p {
+    margin: 0;
+    font-size: 24px;
+}
+
+.cart-summary .fw-bold {
+    font-size: 1.2rem;
+}
+
+.btn-chekout {
+    background-color: var(--accent-color);
+    border: none;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: var(--surface-color);
+}
+
+.btn-chekout:hover {
+    background-color: #E11010FF;
+}
+
+
+/*-- Checkout --*/
+.checkout-section {
+    padding: 30px;
+}
+
+.product-checkout-wrapper {
+    padding: 20px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 50%;
+}
+
+.product-checkout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.product-checkout-title {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.product-checkout-price p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.product-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.product-total p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.form-delivery,
+.form-delivery-options,
+.form-contact,
+.form-address,
+.form-payment,
+.form-comments {
+    padding: 30px 20px 30px 20px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.form-address label {
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+.form-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.delivery-options .form-check,
+.delivery-payment .form-check {
+    margin-bottom: 20px;
+    display: block;
+}
+
+.product-checkout-img img {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.delivery-text {
+    color: var(--muted-text-color);
+}
+
+.delivery-time {
+    font-size: 16px;
+    color: var(--accent-color);
+}
+
+
+.autocomplete-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 1000;
+}
+
+.autocomplete-list li {
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.autocomplete-list li:hover {
+    background-color: var(--background-color);
+}
+
+/*-- Product Show --*/
+
+.btn-product-cart {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    transition: all .3s;
+}
+
+.product-info h1 {
+    font-size: 24px;
+}
+
+.btn-product-cart:hover {
+    background-color: var(--accent-color);
+    color: var(--surface-color);
+}
+
+.btn-product-cart:hover svg {
+    color: var(--surface-color);
+}
+
+.product-page {
+    padding: 30px;
+}
+
+
+.btn-main-page {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    transition: all .3s;
+}
+
+.btn-main-page:hover {
+    background-color: var(--text-color);
+    color: var(--surface-color);
+}
+
+
+
+/*---  Footer  ---*/
+.footer {
+    border-top: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+    padding: 20px 0;
+    color: var(--text-color);
+}
+
+/*---  Footer  ---*/
+
+/*--- Media ---*/
+
+
+@media (max-width: 576px) {
+
+
+    .category-name h3 {
+        font-size: 0.9rem;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .product-price {
+        font-size: 20px;
+    }
+
+    .btn-menu {
+        font-size: 20px;
+    }
+
+    .cart-image img {
+        max-height: 50px;
+        max-width: 50px;
+        object-fit: cover;
+    }
+
+    .product-info h1 {
+        font-size: 20px;
+    }
+
+}
+
+
+@media (max-width: 360px) {
+
+    .logo {
+        font-size: 18px;
+    }
+
+}
