@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TableStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Table extends Model
@@ -10,6 +11,10 @@ class Table extends Model
         'name',
         'guest_number',
         'status',
+    ];
+
+    protected $casts = [
+        'status' => TableStatus::class,
     ];
 
     public function reservations()

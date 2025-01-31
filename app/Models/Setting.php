@@ -7,12 +7,11 @@ use Spatie\Translatable\HasTranslations;
 
 class Setting extends Model
 {
-    use HasTranslations;
 
-    public $translatable = ['key', 'value'];
 
     protected $fillable = [
         'key',
         'value',
+        'value_en',
     ];
 }

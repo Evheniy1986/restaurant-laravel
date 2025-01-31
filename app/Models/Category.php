@@ -10,14 +10,16 @@ use Spatie\Translatable\HasTranslations;
 class Category extends Model
 {
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
-    use HasFactory, SoftDeletes, HasTranslations;
+    use HasFactory, SoftDeletes;
 
-    public $translatable = ['name'];
 
     protected $fillable = [
         'name',
+        'name_en',
         'slug'
     ];
+
+
 
     public function menus()
     {

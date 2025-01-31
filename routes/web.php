@@ -11,6 +11,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'is_admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'index'])->name('index');
+    Route::get('/categories', \App\Livewire\Admin\CategoryCrud::class)->name('category');
+    Route::get('/tables', \App\Livewire\Admin\TableCrud::class)->name('table');
 });
 
 Route::middleware('auth')->group(function () {

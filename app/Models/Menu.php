@@ -10,14 +10,15 @@ use Spatie\Translatable\HasTranslations;
 class Menu extends Model
 {
     /** @use HasFactory<\Database\Factories\MenuFactory> */
-    use HasFactory, SoftDeletes, HasTranslations;
+    use HasFactory, SoftDeletes;
 
-    public $translatable = ['name', 'description'];
 
     protected $fillable = [
         'name',
+        'name_en',
         'slug',
         'description',
+        'description_en',
         'image',
         'weight',
         'old_price',

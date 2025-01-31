@@ -17,9 +17,11 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->json('name');
-            $table->string('slug');
-            $table->json('description');
+            $table->string('name');
+            $table->string('name_en')->nullable();
+            $table->string('slug')->unique();
+            $table->text('description');
+            $table->text('description_en')->nullable();
             $table->string('image');
             $table->string('weight');
             $table->decimal('old_price',12)->nullable();

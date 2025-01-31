@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Dashboard</title>
 
+    @livewireStyles
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('asset/adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('asset/adminlte/dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
@@ -172,8 +174,14 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-
+        @if (session()->has('message'))
+            <div class="alert alert-success position-absolute top-0 end-0 mt-3 me-3 p-2 rounded shadow"
+                 style="width: 300px; z-index: 1050;">
+               <span>{{ session('message') }}</span>
+            </div>
+        @endif
         @yield('content')
+{{--        {{ $slot  }}--}}
 
     </div>
     <!-- /.content-wrapper -->
@@ -188,7 +196,7 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+@livewireScripts
 <!-- jQuery -->
 <script src="{{ asset('asset/adminlte/plugins/jquery/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->

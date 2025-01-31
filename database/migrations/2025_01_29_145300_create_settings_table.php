@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->json('key');
-            $table->json('value');
+            $table->string('key');
+            $table->text('value');
+            $table->text('value_en')->nullable();
             $table->timestamps();
         });
     }
