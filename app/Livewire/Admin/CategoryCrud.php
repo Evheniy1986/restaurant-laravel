@@ -50,7 +50,7 @@ class CategoryCrud extends Component
 
     public function save()
     {
-        $this->validate([
+       $data = $this->validate([
             'name' => 'required|string|max:255',
             'name_en' => 'nullable|string|max:255',
             'slug' => [
@@ -60,19 +60,15 @@ class CategoryCrud extends Component
                 Rule::unique('categories')->ignore($this->categoryId)
             ]
         ]);
+
         if ($this->categoryId) {
             $category = Category::find($this->categoryId);
-            $category->update([
-                'name' => $this->name,
-                'name_en' => $this->name_en,
-            ]);
+            $data['slug'] = $category->slug;
         } else {
-            Category::create([
-                'name' => $this->name,
-                'name_en' => $this->name_en,
-                'slug' => Str::slug($this->name)
-            ]);
+            $data['slug'] = Str::slug($this->name);
         }
+        Category::updateOrCreate(['id' => $this->categoryId], $data);
+
         session()->flash('message', $this->categoryId ? 'Category updated successfully!' : 'Category created successfully!');
         $this->closeModal();
         $this->loadCategories();

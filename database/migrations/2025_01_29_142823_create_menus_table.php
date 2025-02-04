@@ -24,8 +24,8 @@ return new class extends Migration
             $table->text('description_en')->nullable();
             $table->string('image');
             $table->string('weight');
-            $table->decimal('old_price',12)->nullable();
-            $table->decimal('price', 12)->default(0);
+            $table->decimal('old_price',10, 2)->nullable();
+            $table->decimal('price', 12, 2)->default(0);
             $table->boolean('is_new')->default(false);
             $table->boolean('is_hit')->default(false);
 

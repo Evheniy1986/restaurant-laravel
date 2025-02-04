@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Enums\TableStatus;
 use App\Models\Table;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -14,7 +15,7 @@ class TableCrud extends Component
     #[Validate('required|integer')]
     public $guest_number;
 
-    #[Validate('required')]
+    #[Validate('nullable')]
     public $status;
 
     public $isOpen = false;
@@ -33,7 +34,7 @@ class TableCrud extends Component
 
     public function openModal()
     {
-        $this->isOpen =  true;
+        $this->isOpen = true;
     }
 
 
@@ -55,21 +56,18 @@ class TableCrud extends Component
 
     public function save()
     {
-        $this->validate();
+        $data = $this->validate();
 
-        Table::query()->updateOrCreate(['id' => $this->tableId], [
-            'name' => $this->name,
-            'guest_number' => $this->guest_number,
-            'status' => $this->status,
-        ]);
+        $data['status'] = $this->tableId ? $this->status : TableStatus::AVAILABLE;
 
-        session()->flash('maessage', $this->tableId ? 'Table updated successfully!' : 'Table created successfully!');
+        Table::query()->updateOrCreate(['id' => $this->tableId], $data);
+
+        session()->flash('message', $this->tableId ? 'Table updated successfully!' : 'Table created successfully!');
         $this->closeModal();
-        $this->resetFields();
+        $this->load();
     }
 
 
-    // Отображение страницы с таблицами
     public function render()
     {
         $this->load();
@@ -78,7 +76,6 @@ class TableCrud extends Component
     }
 
 
-    // Удаление таблицы
     public function delete($id)
     {
         Table::find($id)->delete();
@@ -86,7 +83,6 @@ class TableCrud extends Component
         $this->load();
     }
 
-    // Сброс значений в форму
     public function resetFields()
     {
         $this->name = '';

@@ -38,6 +38,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.menu') }}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-utensils"></i>
+                        <p>
+                            Меню
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="pages/gallery.html" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>

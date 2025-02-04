@@ -1,10 +1,5 @@
 <div>
-    <!-- Уведомления об успехе -->
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
+    @include('livewire.includes.flash_message')
 
     <!-- Кнопка для открытия модального окна -->
     <button wire:click="openModal" class="btn btn-success m-3">Add Category</button>
@@ -59,13 +54,16 @@
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="slug">Slug</label>
-                                <input type="text" class="form-control" id="slug" wire:model="slug">
-                                @error('slug')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+                            @if($categoryId)
+                                <div class="form-group">
+                                    <label for="slug">Slug</label>
+                                    <input type="text" class="form-control" id="slug" wire:model="slug">
+                                    @error('slug')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            @endif
+
                             <div class="form-group text-right">
                                 <button type="button" class="btn btn-secondary" wire:click="closeModal">Cancel</button>
                                 <button type="submit" class="btn btn-primary">{{ $categoryId ? 'Save Changes' : 'Create Category' }}</button>

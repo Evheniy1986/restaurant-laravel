@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
 
 class Menu extends Model
@@ -17,6 +18,7 @@ class Menu extends Model
         'name',
         'name_en',
         'slug',
+        'category_id',
         'description',
         'description_en',
         'image',
@@ -27,6 +29,16 @@ class Menu extends Model
         'is_hit',
     ];
 
+    protected $casts = [
+        'old_price' => 'decimal:2',
+        'price' => 'decimal:2',
+        'is_hit' => 'boolean',
+        'is_new' => 'boolean',
+        'category_id' => 'integer',
+    ];
+
+
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -36,4 +48,18 @@ class Menu extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function imageUrl()
+    {
+        return Storage::url($this->image);
+    }
+
+    public function deleteImage()
+    {
+        if ($this->image && Storage::disk('public')->exists($this->image)) {
+            Storage::disk('public')->delete($this->image);
+            $this->image = null;
+        }
+    }
+
 }

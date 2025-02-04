@@ -1,10 +1,6 @@
 <div>
-    <!-- Уведомления об успехе -->
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
+
+    @include('livewire.includes.flash_message')
 
     <!-- Кнопка для открытия модального окна -->
     <button wire:click="create" class="btn btn-success m-3">Add Category</button>
@@ -68,22 +64,25 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="name">Name EN</label>
+                                <label for="name">Количество гостей</label>
                                 <input type="text" class="form-control" id="name" wire:model="guest_number">
                                 @error('guest_number')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="status">Status</label>
-                                <select class="form-control" wire:model="status">
-                                    <option>Open this select menu</option>
-                                    @foreach(\App\Enums\TableStatus::cases() as $table)
-                                        <option value="{{ $table->value }}">{{ $table->value }}</option>
-                                    @endforeach
-                                </select>
-                                @error('status') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
+                            @if($tableId)
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select class="form-control" wire:model="status">
+                                        <option>Open this select menu</option>
+                                        @foreach(\App\Enums\TableStatus::cases() as $table)
+                                            <option value="{{ $table->value }}">{{ $table->value }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                            @endif
+
                             <div class="form-group text-right">
                                 <button type="button" class="btn btn-secondary" wire:click="closeModal">Cancel</button>
                                 <button type="submit"

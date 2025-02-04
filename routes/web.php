@@ -13,6 +13,7 @@ Route::middleware(['auth', 'is_admin'])->name('admin.')->prefix('admin')->group(
     Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'index'])->name('index');
     Route::get('/categories', \App\Livewire\Admin\CategoryCrud::class)->name('category');
     Route::get('/tables', \App\Livewire\Admin\TableCrud::class)->name('table');
+    Route::get('/menus', \App\Livewire\Admin\MenuCrud::class)->name('menu');
 });
 
 Route::middleware('auth')->group(function () {
