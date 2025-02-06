@@ -54,12 +54,6 @@ class Menu extends Model
         return Storage::url($this->image);
     }
 
-    public function deleteImage()
-    {
-        if ($this->image && Storage::disk('public')->exists($this->image)) {
-            Storage::disk('public')->delete($this->image);
-            $this->image = null;
-        }
-    }
+
 
 }

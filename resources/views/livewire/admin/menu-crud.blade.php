@@ -2,7 +2,7 @@
     @include('livewire.includes.flash_message')
 
     <!-- Кнопка для открытия модального окна -->
-    <button wire:click="create" class="btn btn-success m-3">Add Menu</button>
+    <button wire:click="create" class="btn btn-success m-3">Add Dish</button>
 
     <!-- Таблица категорий -->
     <table class="table">
@@ -85,7 +85,7 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{ $menuId ? 'Edit Category' : 'Create Category' }}</h5>
+                        <h5 class="modal-title">{{ $menuId ? 'Edit Dish' : 'Create Dish' }}</h5>
                         <button type="button" class="close" wire:click="closeModal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

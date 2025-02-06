@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ReservationStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
@@ -20,7 +21,8 @@ class Reservation extends Model
 
     protected $casts = [
         'date' => 'date',
-        'time' => 'time',
+        'time' => 'datetime:H:i:s',
+        'status' => ReservationStatus::class,
     ];
 
     public function table()

@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Category;
 use App\Models\Menu;
+use App\Services\ImageService;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -24,12 +25,17 @@ class MenuCrud extends Component
     public $isShow = false;
     public $showMenu;
     public $old_image;
+    protected $imageService;
+
+    public function __construct()
+    {
+        $this->imageService = new ImageService();
+    }
 
     public function openModal()
     {
         $this->isOpen = true;
     }
-
 
 
     public function show($id)
@@ -105,7 +111,7 @@ class MenuCrud extends Component
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('menus')->ignore($this->menuId)],
             'description' => 'required|string',
             'description_en' => 'nullable|string',
-            'image' => $this->menuId ? 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:5000' : 'required|image|mimes:jpeg,png,jpg,webp,svg|max:5000',
+            'image' => $this->menuId ? 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:7000' : 'required|image|mimes:jpeg,png,jpg,webp,svg|max:7000',
             'weight' => 'required',
             'old_price' => 'nullable|numeric',
             'price' => 'required|numeric|min:0',
@@ -114,12 +120,12 @@ class MenuCrud extends Component
         ]);
 
         $menu = $this->menuId ? Menu::find($this->menuId) : null;
-        if ($this->image ) {
+        if ($this->image) {
             if ($menu && $menu->image) {
                 Storage::disk('public')->delete($menu->image);
             }
 
-            $data['image'] = $this->image->store('menus', 'public');
+            $data['image'] = $this->imageService->processAndStore($this->image, 'menus');
         } else {
             $data['image'] = $menu->image;
         }
@@ -140,11 +146,7 @@ class MenuCrud extends Component
 
     public function delete($id)
     {
-       $meal = Menu::find($id);
-        if ($meal) {
-            $meal->deleteImage();
-            $meal->delete();
-        }
+        Menu::find($id)->delete();
 
         session()->flash('message', 'Dishes deleted successfully!');
         $this->loadMenuList();

@@ -21,8 +21,6 @@ class CategoryCrud extends Component
 
     public function openModal($categoryId = null)
     {
-        $this->isModalOpen = true;
-
         if ($categoryId) {
             $category = Category::find($categoryId);
             $this->categoryId = $category->id;
@@ -30,22 +28,23 @@ class CategoryCrud extends Component
             $this->name_en = $category->name_en;
             $this->slug = $category->slug;
         } else {
-            $this->resetFields();
+            $this->reset();
         }
+        $this->isModalOpen = true;
     }
 
-    public function resetFields()
-    {
-        $this->categoryId = '';
-        $this->name = '';
-        $this->name_en = '';
-        $this->slug = '';
-    }
+//    public function resetFields()
+//    {
+//        $this->categoryId = '';
+//        $this->name = '';
+//        $this->name_en = '';
+//        $this->slug = '';
+//    }
 
     public function closeModal()
     {
         $this->isModalOpen =false;
-        $this->resetFields();
+        $this->reset();
     }
 
     public function save()

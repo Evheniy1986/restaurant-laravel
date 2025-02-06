@@ -2,14 +2,13 @@
 
     @include('livewire.includes.flash_message')
 
-    <!-- Кнопка для открытия модального окна -->
-    <button wire:click="create" class="btn btn-success m-3">Add Category</button>
+    <button wire:click="create" class="btn btn-success m-3">Add Table</button>
 
-    <!-- Таблица категорий -->
     <table class="table">
         <thead>
         <tr>
             <th>Name</th>
+            <th>Статус</th>
             <th>Guest Number</th>
             <th>Status</th>
             <th>Actions</th>
@@ -19,6 +18,7 @@
         @foreach($tables as $table)
             <tr>
                 <td>{{ $table->name }}</td>
+                <td>{{ $table->status->value }}</td>
                 <td>{{ $table->guest_number }}</td>
                 <td>
                     @foreach(\App\Enums\TableStatus::cases() as $case)
@@ -32,10 +32,10 @@
                     @endforeach
                 </td>
                 <td>
-                    <button wire:click="edit({{ $table->id }})" class="btn btn-primary">Edit</button>
+                    <button wire:click="edit({{ $table->id }})" class="btn btn-sm btn-primary">Edit</button>
                     <button wire:click="delete({{ $table->id }})"
                             wire:confirm="Are you sure"
-                            class="btn btn-danger">Delete
+                            class="btn btn-sm btn-danger">Delete
                     </button>
                 </td>
             </tr>
@@ -43,13 +43,12 @@
         </tbody>
     </table>
 
-    <!-- Модальное окно для создания/редактирования -->
     @if($isOpen)
         <div class="modal fade show" tabindex="-1" style="display: block;" aria-modal="true" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{ $tableId ? 'Edit Category' : 'Create Category' }}</h5>
+                        <h5 class="modal-title">{{ $tableId ? 'Edit Table' : 'Create Table' }}</h5>
                         <button type="button" class="close" wire:click="closeModal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
