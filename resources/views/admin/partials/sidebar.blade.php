@@ -1,4 +1,3 @@
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
     <div class="sidebar">
@@ -62,14 +61,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                    <a href="{{ route('admin.user') }}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-users"></i>
                         <p>
-                            Gallery
+                            Пользователи
                         </p>
                     </a>
                 </li>
-
             </ul>
         </nav>
 

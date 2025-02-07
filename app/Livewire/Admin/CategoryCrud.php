@@ -33,13 +33,6 @@ class CategoryCrud extends Component
         $this->isModalOpen = true;
     }
 
-//    public function resetFields()
-//    {
-//        $this->categoryId = '';
-//        $this->name = '';
-//        $this->name_en = '';
-//        $this->slug = '';
-//    }
 
     public function closeModal()
     {

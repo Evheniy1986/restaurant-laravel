@@ -41,6 +41,7 @@ class TableCrud extends Component
     public function closeModal()
     {
         $this->isOpen = false;
+        $this->resetFields();
     }
 
     public function edit($id)
