@@ -16,37 +16,40 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('/asset/images/sliders/WEB_Kyiv_MamaManana_10khinkali.webp') }}"
-                     class="d-block w-100 object-fit-cover" alt="...">
+                <a class="no-underline" href="#"><img src="{{ asset('/asset/images/sliders/WEB_Kyiv_MamaManana_10khinkali.webp') }}"
+                                 class="d-block w-100 object-fit-cover" alt="..."></a>
                 <div class="carousel-caption d-none d-md-block">
-
+                    <h2 class="slider-title">Third slide label</h2>
+                    <p class="slider-description">Some representative placeholder content for the third slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('/asset/images/sliders/1705949175925.webp') }}" class="d-block w-100 object-fit-cover" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-
+                    <h2 class="slider-title">Third slide label</h2>
+                    <p class="slider-description">Some representative placeholder content for the third slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('/asset/images/sliders/1716367895784.webp') }}" class="d-block w-100 object-fit-cover" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-
+                    <h2 class="slider-title">Third slide label</h2>
+                    <p class="slider-description">Some representative placeholder content for the third slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('asset/images/sliders/tg_image_2993662886.webp') }}" class="d-block w-100 object-fit-cover" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h2>Third slide label</h2>
-                    <p>Some representative placeholder content for the third slide.</p>
+                    <h2 class="slider-title">Third slide label</h2>
+                    <p class="slider-description">Some representative placeholder content for the third slide.</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('/asset/images/sliders/WEB_Kyiv_MamaManana_12khachapuri.webp') }}"
                      class="d-block w-100 object-fit-cover" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h2>Third slide label</h2>
-                    <p>Some representative placeholder content for the third slide.</p>
+                    < <h2 class="slider-title">Third slide label</h2>
+                    <p class="slider-description">Some representative placeholder content for the third slide.</p>
                 </div>
             </div>
 

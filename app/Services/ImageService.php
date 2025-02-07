@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 
 class ImageService
@@ -12,7 +13,11 @@ class ImageService
 
         $path = "$folder/$fileName";
 
-        Image::read($file)->resize($width, $height)->toWebp()->save(public_path('storage/'. $path));
+        if (!Storage::exists($folder)) {
+            Storage::makeDirectory($folder);
+        }
+
+        Image::read($file)->cover($width, $height)->toWebp()->save(public_path('storage/'. $path));
 
         return $path;
     }

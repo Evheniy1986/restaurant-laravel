@@ -7,9 +7,6 @@ use Spatie\Translatable\HasTranslations;
 
 class Slider extends Model
 {
-
-
-
     protected $fillable = [
         'title',
         'title_en',
@@ -20,4 +17,11 @@ class Slider extends Model
         'order',
         'is_active',
     ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+        'order' => 'integer',
+    ];
+
+
 }

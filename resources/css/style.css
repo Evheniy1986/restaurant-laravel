@@ -223,6 +223,9 @@ header {
 
 /*----- Slider ----*/
 
+.carousel-item {
+    position: relative;
+}
 
 .carousel img {
     max-height: 300px;
@@ -231,10 +234,29 @@ header {
     height: auto;
     border-radius: 30px;
     margin: auto;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.3s ease;
 }
 
+.carousel-caption {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    transform: translateY(-50%);
+    max-width: 40%;
+}
+
+.slider-title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.slider-description {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-top: 30px;
+}
 
 .carousel-control-prev,
 .carousel-control-next {

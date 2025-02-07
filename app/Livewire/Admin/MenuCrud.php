@@ -133,10 +133,7 @@ class MenuCrud extends Component
         $data['slug'] = $menu ? $menu->slug : Str::slug($this->name);
 
 
-        Menu::updateOrCreate(
-            ['id' => $this->menuId],
-            $data
-        );
+        Menu::updateOrCreate(['id' => $this->menuId], $data);
 
         session()->flash('message', $this->menuId ? 'Dishes updated successfully' : 'Dishes created successfully');
         $this->closeModal();

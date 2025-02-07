@@ -54,6 +54,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.slider') }}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-sliders"></i>
+                        <p>
+                            Слайдер
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="pages/gallery.html" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>

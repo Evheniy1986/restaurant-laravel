@@ -15,6 +15,7 @@ Route::middleware(['auth', 'is_admin'])->name('admin.')->prefix('admin')->group(
     Route::get('/tables', \App\Livewire\Admin\TableCrud::class)->name('table');
     Route::get('/menus', \App\Livewire\Admin\MenuCrud::class)->name('menu');
     Route::get('/reservations', \App\Livewire\Admin\ReservationCrud::class)->name('reservation');
+    Route::get('/sliders', \App\Livewire\Admin\SliderCrud::class)->name('slider');
 });
 
 Route::middleware('auth')->group(function () {
