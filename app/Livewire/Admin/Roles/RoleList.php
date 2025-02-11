@@ -3,11 +3,14 @@
 namespace App\Livewire\Admin\Roles;
 
 use App\Models\Role;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class RoleList extends Component
 {
+    use AuthorizesRequests;
+
     public $roles;
 
     public function mount()
@@ -17,7 +20,7 @@ class RoleList extends Component
 
     public function edit($id)
     {
-       $this->dispatch('edit-role', id: $id);
+        $this->dispatch('edit-role', id: $id);
     }
 
     #[On('role-created')]
@@ -29,8 +32,7 @@ class RoleList extends Component
     public function delete($id)
     {
         $role = Role::findOrFail($id);
-
-
+        $this->authorize('delete', $role);
         $role->delete();
         $this->loadList();
         session()->flash('message', 'Роль удалена!');

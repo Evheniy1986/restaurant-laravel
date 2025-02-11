@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
@@ -11,6 +12,8 @@ use Livewire\Component;
 
 class UserCrud extends Component
 {
+
+    use AuthorizesRequests;
 
     public $users;
     public $userId;
@@ -32,6 +35,7 @@ class UserCrud extends Component
 
     public function create()
     {
+        $this->authorize('create', Role::class);
         $this->reset();
         $this->openModal();
     }
@@ -51,6 +55,7 @@ class UserCrud extends Component
     public function edit($id)
     {
         $user = User::find($id);
+        $this->authorize('update', $user);
         $this->userId = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
@@ -64,7 +69,7 @@ class UserCrud extends Component
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => ['required','string', Rule::unique('users')->ignore($this->userId)],
+            'email' => ['required', 'string', Rule::unique('users')->ignore($this->userId)],
             'password' => $this->userId ? 'nullable|string|min:6|confirmed' : 'required|string|min:6|confirmed',
             'role_id' => 'required|exists:roles,id',
         ];
@@ -96,7 +101,10 @@ class UserCrud extends Component
 
     public function delete($id)
     {
-        User::find($id)->delete();
+        $user = User::find($id);
+
+        $this->authorize('delete', $user);
+        $user->delete();
         session()->flash('message', 'User deleted successfully!');
         $this->load();
     }
