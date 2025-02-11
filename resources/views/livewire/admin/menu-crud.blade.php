@@ -18,17 +18,17 @@
         <tbody>
         @foreach($menus as $menu)
             <tr>
-                <td>{{ $menu->name }}</td>
+                <td >{{ $menu->name }}</td>
                 <td><img style="width: 100px; height: 100px"
                          src="{{ \Illuminate\Support\Facades\Storage::url($menu->image)}}" alt=""></td>
                 <td>{{ $menu->description }}</td>
                 <td>{{ $menu->category->name }}</td>
-                <td>
-                    <button wire:click="show({{ $menu->id }})" class="btn btn-outline-secondary">Show</button>
-                    <button wire:click="edit({{ $menu->id }})" class="btn btn-primary">Edit</button>
+                <td class="btn-group">
+                    <button wire:click="show({{ $menu->id }})" class="btn btn-sm btn-outline-secondary">Show</button>
+                    <button wire:click="edit({{ $menu->id }})" class="btn btn-sm btn-primary">Edit</button>
                     <button wire:click="delete({{ $menu->id }})"
                             wire:confirm="Are you sure"
-                            class="btn btn-danger">Delete
+                            class="btn btn-sm btn-danger">Delete
                     </button>
                 </td>
             </tr>

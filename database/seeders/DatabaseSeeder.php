@@ -30,5 +30,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
        $admin->roles()->attach($adminRole);
+
+        $this->call([
+            CategorySeeder::class,
+            MenuSeeder::class,
+            SliderSeeder::class,
+        ]);
     }
 }

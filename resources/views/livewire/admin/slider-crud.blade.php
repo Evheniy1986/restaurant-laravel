@@ -23,12 +23,12 @@
                 <td>{{ $slider->description }}</td>
                 <td>{{ $slider->link }}</td>
                 <td>{{ $slider->is_active ? 'Активная' : 'Нет' }}</td>
-                <td>
-                    <button wire:click="show({{ $slider->id }})" class="btn btn-outline-secondary">Show</button>
-                    <button wire:click="edit({{ $slider->id }})" class="btn btn-primary">Edit</button>
+                <td class="btn-group">
+                    <button wire:click="show({{ $slider->id }})" class="btn btn-sm btn-outline-secondary">Show</button>
+                    <button wire:click="edit({{ $slider->id }})" class="btn btn-sm btn-primary">Edit</button>
                     <button wire:click="delete({{ $slider->id }})"
                             wire:confirm="Are you sure"
-                            class="btn btn-danger">Delete
+                            class="btn btn-sm btn-danger">Delete
                     </button>
                 </td>
             </tr>
