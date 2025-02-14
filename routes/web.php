@@ -1,9 +1,18 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Admin\CategoryCrud;
+use App\Livewire\Admin\MenuCrud;
+use App\Livewire\Admin\ReservationCrud;
+use App\Livewire\Admin\Roles\RoleCrud;
+use App\Livewire\Admin\SliderCrud;
+use App\Livewire\Admin\TableCrud;
+use App\Livewire\Admin\UserCrud;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('main');
+Route::get('/', [MainController::class, 'index'])->name('main');
+Route::get('/cart', \App\Livewire\Front\Cart::class)->name('cart');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -11,13 +20,13 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'admin_or_manager',])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'index'])->name('index');
-    Route::get('/categories', \App\Livewire\Admin\CategoryCrud::class)->name('category');
-    Route::get('/tables', \App\Livewire\Admin\TableCrud::class)->name('table');
-    Route::get('/menus', \App\Livewire\Admin\MenuCrud::class)->name('menu');
-    Route::get('/reservations', \App\Livewire\Admin\ReservationCrud::class)->name('reservation');
-    Route::get('/sliders', \App\Livewire\Admin\SliderCrud::class)->name('slider');
-    Route::get('/users', \App\Livewire\Admin\UserCrud::class)->name('user');
-    Route::get('/roles', \App\Livewire\Admin\Roles\RoleCrud::class)->name('role');
+    Route::get('/categories', CategoryCrud::class)->name('category');
+    Route::get('/tables', TableCrud::class)->name('table');
+    Route::get('/menus', MenuCrud::class)->name('menu');
+    Route::get('/reservations', ReservationCrud::class)->name('reservation');
+    Route::get('/sliders', SliderCrud::class)->name('slider');
+    Route::get('/users', UserCrud::class)->name('user');
+    Route::get('/roles', RoleCrud::class)->name('role');
 });
 
 Route::middleware('auth')->group(function () {
@@ -26,4 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
+
 require __DIR__.'/auth.php';
+
+Route::get('/{category}', [MainController::class, 'categoryWithProduct'])->name('category');

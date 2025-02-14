@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Helpers\DirManager;
+use App\Models\Category;
 use App\Models\Menu;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,7 +26,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Оджахурі з білими грибами',
                 'name_en' => 'Ojahuri with white mushrooms',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Оджахурі з білими грибами'),
                 'description' => 'Смажена картопля з м’ясом та білими грибами',
                 'description_en' => 'Fried potatoes with meat and white mushrooms',
@@ -39,7 +40,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Борщ український',
                 'name_en' => 'Ukrainian Borscht',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Борщ український'),
                 'description' => 'Традиційний червоний борщ з пампушками',
                 'description_en' => 'Traditional red borscht with garlic buns',
@@ -53,7 +54,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Котлета по-київськи',
                 'name_en' => 'Chicken Kiev',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Котлета по-київськи'),
                 'description' => 'Соковита куряча котлета з маслом',
                 'description_en' => 'Juicy chicken cutlet with butter',
@@ -67,7 +68,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Грецький салат',
                 'name_en' => 'Greek Salad',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Грецький салат'),
                 'description' => 'Овочевий салат з фетою',
                 'description_en' => 'Vegetable salad with feta cheese',
@@ -81,7 +82,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Паста Карбонара',
                 'name_en' => 'Pasta Carbonara',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Паста Карбонара'),
                 'description' => 'Паста з беконом і соусом',
                 'description_en' => 'Pasta with bacon and sauce',
@@ -95,7 +96,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Піца Маргарита',
                 'name_en' => 'Pizza Margherita',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Піца Маргарита'),
                 'description' => 'Томатний соус, моцарела, базилік',
                 'description_en' => 'Tomato sauce, mozzarella, basil',
@@ -109,7 +110,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Шашлик зі свинини',
                 'name_en' => 'Pork Shashlik',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Шашлик зі свинини'),
                 'description' => 'Соковите м’ясо на грилі',
                 'description_en' => 'Juicy grilled meat',
@@ -123,7 +124,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Рол Філадельфія',
                 'name_en' => 'Philadelphia Roll',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Рол Філадельфія'),
                 'description' => 'Лосось, крем-сир, рис',
                 'description_en' => 'Salmon, cream cheese, rice',
@@ -137,7 +138,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Сирники',
                 'name_en' => 'Cheese Pancakes',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Сирники'),
                 'description' => 'Домашні сирники з варенням',
                 'description_en' => 'Homemade cheese pancakes with jam',
@@ -151,7 +152,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Чізкейк Нью-Йорк',
                 'name_en' => 'New York Cheesecake',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Чізкейк Нью-Йорк'),
                 'description' => 'Класичний чізкейк з сиром',
                 'description_en' => 'Classic cheesecake with cheese',
@@ -165,7 +166,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Лате',
                 'name_en' => 'Latte',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Лате'),
                 'description' => 'Молочна кава',
                 'description_en' => 'Milk coffee',
@@ -179,7 +180,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Чай зелений',
                 'name_en' => 'Green Tea',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Чай зелений'),
                 'description' => 'Ароматний зелений чай',
                 'description_en' => 'Aromatic green tea',
@@ -193,7 +194,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Деруни',
                 'name_en' => 'Potato Pancakes',
-                'category_id' => rand(1, 13),
+                'category_id' => Category::query()->inRandomOrder()->value('id'),
                 'slug' => Str::slug('Деруни'),
                 'description' => 'Традиційні картопляні деруни з часником і сметаною',
                 'description_en' => 'Traditional potato pancakes with garlic and sour cream',

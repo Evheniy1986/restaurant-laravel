@@ -19,7 +19,7 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('asset/adminlte/plugins/summernote/summernote-bs4.min.css') }}">
 
-{{--    @vite(['resources/css/app.css', 'resources/css/style.css', 'resources/js/app.js'])--}}
+{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -91,6 +91,7 @@
     <!-- Main Sidebar Container -->
     @include('admin.partials.sidebar')
 
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         @if (session()->has('message'))
@@ -100,7 +101,6 @@
             </div>
         @endif
         @yield('content')
-        {{--        {{ $slot  }}--}}
 
     </div>
     <!-- /.content-wrapper -->
@@ -115,7 +115,7 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-@livewireScripts
+
 <!-- jQuery -->
 <script src="{{ asset('asset/adminlte/plugins/jquery/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -126,7 +126,6 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('asset/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-{{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>--}}
 
 <!-- ChartJS -->
 {{--<script src="{{ asset('asset/adminlte/plugins/chart.js/Chart.min.js') }}"></script>--}}
@@ -136,6 +135,7 @@
 <script src="{{ asset('asset/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('asset/adminlte/dist/js/adminlte.js') }}"></script>
+@livewireScripts
 </body>
 </html>
 

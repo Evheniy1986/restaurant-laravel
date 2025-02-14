@@ -20,9 +20,20 @@ class Category extends Model
     ];
 
 
-
     public function menus()
     {
         return $this->hasMany(Menu::class);
+    }
+
+    public function scopeWithRandomMenu($query)
+    {
+        return $query->whereHas('menus')->with(['menus' => function ($q) {
+            $q->inRandomOrder()->take(4);
+        }]);
+    }
+
+    public function scopeFindBySlug($query)
+    {
+        return $query->where('slug', $this->slug);
     }
 }

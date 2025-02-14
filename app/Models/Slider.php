@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
 
 class Slider extends Model
@@ -23,5 +24,8 @@ class Slider extends Model
         'order' => 'integer',
     ];
 
-
+    public function getImage()
+    {
+        return Storage::url($this->image);
+    }
 }
