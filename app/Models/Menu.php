@@ -30,8 +30,8 @@ class Menu extends Model
     ];
 
     protected $casts = [
-        'old_price' => 'decimal:2',
-        'price' => 'decimal:2',
+        'old_price' => 'integer',
+        'price' => 'integer',
         'is_hit' => 'boolean',
         'is_new' => 'boolean',
         'category_id' => 'integer',

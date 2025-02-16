@@ -6,21 +6,18 @@
                     <a href="{{ route('main') }}" class="btn-main-page mb-1 no-underline">&larr; Назад</a>
                 </div>
             </div>
-            <!-- Заголовок -->
+
             @if($cart && count($cart) > 0)
                 <div class="row mb-5">
                     <div class="col-12">
                         <h1 class="text-center mt-lg-3">Кошик</h1>
                     </div>
                 </div>
-                <!-- Корзина -->
 
                 <div class="row">
-                    <!-- Товары -->
                     <div class="col-lg-8 col-md-12">
                         @foreach($cart as $id => $item)
                             <div class="cart-item row align-items-center mb-1 gx-0">
-                                <!-- Изображение и название товара -->
                                 <div class="cart-image col-6 col-sm-7 d-flex align-items-center mb-5 mb-sm-0">
                                     <a href="#" class="d-flex align-items-center no-underline">
                                         <img src="{{ \Illuminate\Support\Facades\Storage::url($item['image']) }}"
@@ -28,14 +25,11 @@
                                         <span class="cart-product-name">{{ $item['name'] }}</span>
                                     </a>
                                 </div>
-                                <!-- Цена -->
                                 <div class="cart-price col-6 col-sm-2 text-center mb-5 mb-sm-0">
                                     <span class="me-2">{{ $item['price'] * $item['quantity'] }} грн</span>
                                 </div>
-                                <!-- Управление количеством и удаление -->
                                 <div
                                     class="col-12 col-sm-3 d-flex justify-content-between align-items-center flex-wrap">
-                                    <!-- Управление количеством -->
                                     <div
                                         class="quantity-controls d-flex align-items-center align-content-center mb-2 mb-sm-0 col-6 col-sm-5">
                                         <button wire:click="decrease({{ $id }})" class="decrease-btn">
@@ -47,7 +41,6 @@
                                             <i class="fa-solid fa-plus"></i>
                                         </button>
                                     </div>
-                                    <!-- Удаление -->
                                     <button wire:click="delete({{ $id }})" class="btn-delete-product col-sm-2 col-6">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
@@ -56,7 +49,6 @@
                         @endforeach
                     </div>
 
-                    <!-- Итоговая информация -->
                     <div class="col-lg-4 col-md-12">
                         <div class="cart-summary">
                             <div class="item-count mb-3">

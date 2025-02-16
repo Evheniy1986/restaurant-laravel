@@ -22,7 +22,7 @@
             <div
                 class="mt-2 product-bottom-details d-flex justify-content-between align-items-center">
                 <div class="product-price mb-2">
-                    <small class="d-none d-sm-block text-start">{{ $meal->old_price }}</small>
+                    <small class="d-block text-start">{{ $meal->old_price }}</small>
                     {{ $meal->price }} грн
                 </div>
 

@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->text('description_en')->nullable();
-            $table->string('image');
-            $table->string('weight');
+            $table->string('image')->nullable();
+            $table->string('weight')->nullable();
             $table->decimal('old_price',10, 2)->nullable();
             $table->decimal('price', 12, 2)->default(0);
             $table->boolean('is_new')->default(false);

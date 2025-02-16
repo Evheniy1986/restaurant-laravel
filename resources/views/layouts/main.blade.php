@@ -21,7 +21,6 @@
 <div class="wrapper">
     @include('includes.front.header')
 
-    <!-- Offcanvas Menu -->
     @include('includes.front.mobile_menu')
 
     <main class="main">
@@ -31,7 +30,7 @@
     @include('includes.front.footer')
 </div>
 
-
+<x-toaster-hub/>
 {{--<script src="js/main.js"></script>--}}
 </body>
 </html>

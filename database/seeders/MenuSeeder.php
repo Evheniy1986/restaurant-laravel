@@ -191,20 +191,7 @@ class MenuSeeder extends Seeder
                 'is_new' => fake()->boolean(),
                 'is_hit' => fake()->boolean(),
             ],
-            [
-                'name' => 'Деруни',
-                'name_en' => 'Potato Pancakes',
-                'category_id' => Category::query()->inRandomOrder()->value('id'),
-                'slug' => Str::slug('Деруни'),
-                'description' => 'Традиційні картопляні деруни з часником і сметаною',
-                'description_en' => 'Traditional potato pancakes with garlic and sour cream',
-                'weight' => '250g',
-                'image' => $totalImages ? 'menus/' . $images[($imageIndex++) % $totalImages] : null,
-                'old_price' => fake()->boolean(50) ? rand(100, 900) : null,
-                'price' => rand(100, 800),
-                'is_new' => fake()->boolean(),
-                'is_hit' => fake()->boolean(),
-            ],
+
         ];
 
 

@@ -50,7 +50,7 @@
                         <div class="category-card">
                             <div class="category-name">
                                 <h3><a class="no-underline"
-                                       href="{{ route('category', $category->slug) }}">{{ $category->name }}</a></h3>
+                                       href="{{ route('category', $category->slug) }}">{{ \Illuminate\Support\Str::words($category->name, 2) }}</a></h3>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
     <section class="foods mb-4">
         <div class="container-fluid">
             <h1 class="mb-4">{{ $categorywithMeal->name }}</h1>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-1 mb-3 mt-4">
+            <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-1 mb-3 mt-4">
                 @foreach($categorywithMeal->menus as $meal)
                     <livewire:front.product :$meal :key="$meal->id"/>
                 @endforeach

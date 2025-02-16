@@ -51,7 +51,7 @@
 
                             <div class="category-name">
                                 <h3><a class="no-underline"
-                                       href="{{ route('category', $category->slug) }}">{{ $category->name }}</a></h3>
+                                       href="{{ route('category', $category->slug) }}">{{ \Illuminate\Support\Str::words($category->name, 2) }}</a></h3>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                 <div class="row mb-3 mt-4">
                     <div class="col-12 product-category d-flex align-items-end">
                         <div class="product-category-name me-2">
-                            <h2 class="section-name">{{ $category->name }}</h2>
+                            <h2 class="section-name">{{ $category->name, 10 }}</h2>
                         </div>
                         <div class="product-category-link">
                             <a class="" href="{{ route('category', $category->slug) }}">Смотреть все<i

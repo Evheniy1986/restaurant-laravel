@@ -29,11 +29,6 @@ class CategorySeeder extends Seeder
                 'name_en' => 'Dinner',
                 'slug' => 'vecheri',
             ],
-            [
-                'name' => 'Десерти',
-                'name_en' => 'Desserts',
-                'slug' => 'deserty',
-            ],
 
         ];
 

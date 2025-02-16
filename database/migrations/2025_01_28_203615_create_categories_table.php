@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('name_en')->nullable();
             $table->string('slug')->unique();
+            $table->timestamp('parsed_at')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
