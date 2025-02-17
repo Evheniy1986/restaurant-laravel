@@ -48,7 +48,6 @@
                 @foreach($categories as $category)
                     <div class="col-lg-2 col-md-3 col-sm-3 col-5">
                         <div class="category-card">
-
                             <div class="category-name">
                                 <h3><a class="no-underline"
                                        href="{{ route('category', $category->slug) }}">{{ \Illuminate\Support\Str::words($category->name, 2) }}</a></h3>
