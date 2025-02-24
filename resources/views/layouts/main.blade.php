@@ -24,6 +24,7 @@
     @include('includes.front.mobile_menu')
 
     <main class="main">
+        @include('livewire.includes.flash_message')
         @yield('content')
     </main>
 
@@ -31,6 +32,8 @@
 </div>
 
 <x-toaster-hub/>
+
+{{--<script src="https://static.liqpay.ua/libjs/checkout.js"></script>--}}
 {{--<script src="js/main.js"></script>--}}
 </body>
 </html>

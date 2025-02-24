@@ -15,14 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
-            $table->enum('delivery_type', ['courier', 'pickup']);
-            $table->enum('payment_method', ['cash', 'terminal', 'online'])->nullable();
-            $table->enum('delivery_time_type', ['asap', 'specific'])->nullable();
+            $table->string('delivery_type');
+            $table->string('payment_method')->nullable();
+            $table->string('change_with')->nullable();
+            $table->string('delivery_time_type')->nullable();
             $table->date('delivery_date')->nullable();
             $table->time('delivery_time')->nullable();
             $table->text('comment')->nullable();
             $table->decimal('total_price', 10, 2);
-            $table->enum('status', ['pending', 'confirmed', 'delivered', 'canceled'])->default('pending');
+            $table->string('status')->default('pending');
+            $table->string('payment_status')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

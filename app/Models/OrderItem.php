@@ -10,7 +10,7 @@ class OrderItem extends Model
     use SoftDeletes;
     protected $fillable = [
         'order_id',
-        'product_id',
+        'menu_id',
         'quantity',
         'price'
     ];
@@ -23,5 +23,17 @@ class OrderItem extends Model
     public function menu()
     {
         return $this->belongsTo(Menu::class);
+    }
+
+    public static function storeMany(int $orderId,array $cart)
+    {
+        foreach ($cart as $id => $item) {
+            self::create([
+                'order_id' => $orderId,
+                'menu_id' => $id,
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
+            ]);
+        }
     }
 }
